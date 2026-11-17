@@ -141,3 +141,25 @@ body.pink{--cur:var(--pink)}
 #projects{isolation:isolate;overflow:hidden}
 #projects::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:0;right:0;bottom:0;width:min(70vw,1000px);background:url("../assets/images/wire-tech.png") right center/contain no-repeat;filter:drop-shadow(0 0 6px #6366f1aa);opacity:.3;-webkit-mask-image:linear-gradient(to right,transparent,#000 50%);mask-image:linear-gradient(to right,transparent,#000 50%)}
 @media (max-width:760px){#projects::before{width:100%;opacity:.15}}
+
+/* loader */
+body.loading{overflow:hidden}
+body.loading .hero h1,body.loading .hero .label{animation-play-state:paused}
+#loader{position:fixed;inset:0;z-index:100;overflow:hidden}
+.ld-panel{position:absolute;left:0;right:0;height:50.2%;background:var(--bg);transition:transform .9s cubic-bezier(.77,0,.18,1)}
+.ld-panel.top{top:0}.ld-panel.bot{bottom:0}
+.ld-bar{position:absolute;left:var(--pad);right:var(--pad);top:50%;height:1px;background:var(--line);transition:opacity .3s}
+.ld-bar i{display:block;height:100%;width:var(--p,0%);background:var(--acc);box-shadow:0 0 16px var(--acc),0 0 4px var(--acc)}
+.ld-above{position:absolute;left:var(--pad);bottom:calc(50% + 1.6rem);display:flex;align-items:flex-end;gap:1rem;transition:opacity .3s}
+.ld-above img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 0 8px #6366f1aa)}
+.ld-above .spin{animation:ldspin 10s linear infinite}
+@keyframes ldspin{to{transform:rotate(360deg)}}
+.ld-below{position:absolute;left:var(--pad);right:var(--pad);top:calc(50% + 1rem);transition:opacity .3s}
+.ld-num{font:700 clamp(5rem,24vw,14rem) var(--f-head);line-height:.95;letter-spacing:-.05em}
+.ld-num b{font-weight:700;color:transparent;-webkit-text-stroke:1px var(--ink);background:linear-gradient(to top,var(--ink) var(--p,0%),transparent 0);-webkit-background-clip:text;background-clip:text}
+.ld-num small{font:italic 400 .72rem var(--f-mono);letter-spacing:.2em;color:var(--muted);margin-left:.6rem;vertical-align:top;display:inline-block;margin-top:1.2rem}
+.ld-status{display:flex;justify-content:space-between;gap:1rem;font:italic .72rem var(--f-mono);letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-top:.6rem}
+#loader.done .ld-above,#loader.done .ld-below,#loader.done .ld-bar{opacity:0}
+#loader.done .ld-panel.top{transform:translateY(-100%);transition-delay:.3s}
+#loader.done .ld-panel.bot{transform:translateY(100%);transition-delay:.3s}
+@media (max-width:760px){.ld-above img{width:48px;height:48px}.ld-status{letter-spacing:.2em}}
