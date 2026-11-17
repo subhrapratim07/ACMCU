@@ -96,7 +96,7 @@
 
   // hero background: drifting indigo node network (canvas, no library)
   const cv = $("#bg"), cx = cv.getContext("2d");
-  if (!matchMedia("(prefers-reduced-motion:reduce)").matches) {
+  if (!matchMedia("(prefers-reduced-motion:reduce)").matches && !matchMedia("(max-width:760px)").matches) {
     let w, h, pts;
     const init = () => {
       w = cv.width = cv.offsetWidth; h = cv.height = cv.offsetHeight;

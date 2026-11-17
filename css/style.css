@@ -28,7 +28,7 @@ h2 em{font-style:normal;color:var(--cur)}
 .nav-wrap.scrolled::before{opacity:1}
 .brand{display:flex;align-items:center;gap:.7rem;font:700 1.2rem var(--f-head);text-decoration:none;letter-spacing:-.02em}
 .brand b{color:var(--cur)}
-.brand .logo{height:38px;width:auto;display:block;object-fit:contain}
+.brand .logo{height:40px;width:40px;display:block;object-fit:contain}
 .brand-text{margin-left:.15rem}
 #nav{position:relative;display:flex;gap:.2rem;padding:.35rem;border:1px solid var(--line);border-radius:99px;background:#000000b8;backdrop-filter:blur(14px)}
 #nav a{position:relative;z-index:1;padding:.45rem 1rem;text-decoration:none;font:.72rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;border-radius:99px;transition:color .3s}
@@ -120,7 +120,8 @@ body.pink{--cur:var(--pink)}
   #nav{position:fixed;inset:4.5rem 1rem auto;flex-direction:column;border-radius:20px;padding:.8rem;display:none;background:#000000f2}
   #nav.open{display:flex}.pill{display:none}
   #nav a.on{background:var(--cur)}
-  .brand .logo{height:30px}
+  .brand .logo{height:34px;width:34px}
+  #bg{display:none}
   .brand{gap:.5rem;font-size:1.05rem}
   .hero-foot{position:static;text-align:left;margin-top:2.5rem}
   .row{grid-template-columns:1fr}.row small{text-align:left}
