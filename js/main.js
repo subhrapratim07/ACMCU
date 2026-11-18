@@ -55,18 +55,46 @@
   $("#projGrid").innerHTML = D.projects.map(p =>
     `<article class="card"><h3>${esc(p.name)}</h3><p>${esc(p.text)}</p><div class="links"><a href="${esc(p.link)}" target="_blank" rel="noopener">Visit website</a></div></article>`).join("");
 
-  // team: big name list drives the profile card
+  // footer: contact details, map and social icons (all from data.js)
+  const C = D.contact, q = encodeURIComponent(C.mapQuery);
+  $("#addr").innerHTML = `<b>${esc(C.address[0])}</b>` + C.address.slice(1).map(esc).join("<br>");
+  $("#mail").href = "mailto:" + C.email; $("#mail").textContent = C.email;
+  $("#mapFrame").src = `https://www.google.com/maps?q=${q}&output=embed`;
+  $("#mapLink").href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+  $("#social").innerHTML = D.social.map(s => {
+    const live = s.url && s.url !== "#";
+    return `<li><a href="${esc(s.url || "#")}" aria-label="${esc(s.name)}" title="${esc(s.name)}"${live ? ' target="_blank" rel="noopener"' : ""}><i class="${esc(s.icon)}" aria-hidden="true"></i></a></li>`;
+  }).join("");
+
+  // team: big name list drives the profile card.
+  // Auto-rotates every TEAM_MS; pauses while the pointer/focus is on the section
+  // (or it is off-screen) and resumes from whichever member is currently shown.
+  const TEAM_MS = 2000;
   const lk = (u, n) => u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${n}</a>` : "";
-  const list = $("#tlist"), card = $("#tcard");
+  const list = $("#tlist"), card = $("#tcard"), wrap = $(".team-wrap");
+  let cur = -1, hover = false, focus = false, vis = false;
   list.innerHTML = D.team.map((m, i) => `<li><button data-i="${i}">${esc(m.name)}</button></li>`).join("");
-  const pick = i => {
+  const hold = () => card.classList.toggle("hold", hover || focus || !vis);
+  const pick = (i, force) => {
+    if (i === cur && !force) return;
+    cur = i;
     const m = D.team[i];
     list.querySelectorAll("button").forEach((b, j) => b.classList.toggle("on", j === i));
     const av = m.img ? `<img src="${esc(m.img)}" alt="${esc(m.name)}">` : `<div class="ph" aria-hidden="true">${esc(m.name.replace(/^Dr\.\s*/, "")[0])}</div>`;
     card.innerHTML = `${av}<div class="plate"><b>${esc(m.name)}</b><small>${esc(m.role)}</small><div class="links">${lk(m.linkedin, "LinkedIn")}${lk(m.github, "GitHub")}</div></div>`;
+    card.classList.remove("tick"); void card.offsetWidth; card.classList.add("tick");   // restart the timer bar
   };
-  list.onmouseover = list.onclick = e => { const b = e.target.closest("button"); b && pick(+b.dataset.i) };
+  const fromEvent = e => { const b = e.target.closest("button"); b && pick(+b.dataset.i) };
+  list.onmouseover = list.onclick = list.onfocusin = fromEvent;
+  card.style.setProperty("--ti", TEAM_MS + "ms");
+  card.addEventListener("animationend", e => { if (e.animationName === "tcardTick") pick((cur + 1) % D.team.length, true) });
+  wrap.addEventListener("pointerenter", () => { hover = true; hold() });
+  wrap.addEventListener("pointerleave", () => { hover = false; hold() });
+  wrap.addEventListener("focusin", () => { focus = true; hold() });
+  wrap.addEventListener("focusout", () => { focus = false; hold() });
+  new IntersectionObserver(es => { vis = es[0].isIntersecting; hold() }, { threshold: .25 }).observe($("#team"));
   pick(0);
+  hold();
 
   // nav: sliding pill, active section, pink theme in ACM-W
   const nav = $("#nav"), pill = $(".pill"), links = [...nav.querySelectorAll("a")];

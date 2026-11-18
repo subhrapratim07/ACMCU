@@ -9,6 +9,7 @@
 <link rel="shortcut icon" href="favicon.ico?v=3">
 <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png?v=3">
 <meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="css/style.css">
 <noscript><style>#loader{display:none}body.loading{overflow:auto}body.loading .hero h1,body.loading .hero .label{animation-play-state:running}</style></noscript>
 </head>
@@ -101,15 +102,35 @@
 </section>
 </main>
 
-<footer class="pad foot">
-  <div class="big" aria-hidden="true">ACM<br>CU</div>
-  <span class="label">Get in touch</span>
-  <h2>Let's <em>connect</em></h2>
-  <p>ACM CU, University of Calcutta, Kolkata</p>
-  <a class="btn" href="mailto:acm@example.com">acm@example.com</a>
+<footer class="pad foot" id="contact">
+  <div class="big" id="big" role="img" aria-label="ACM CU">
+    <span class="big-fallback" aria-hidden="true">ACM<br>CU</span>
+    <canvas id="bigCv" aria-hidden="true"></canvas>
+    <span class="big-hint" aria-hidden="true">Move to push. Hold to pull.</span>
+    <button class="big-play" id="bigPlay" type="button">Play gravity</button>
+  </div>
+  <div class="foot-grid">
+    <div class="foot-info">
+      <span class="label">Get in touch</span>
+      <h2>Let's <em>connect</em></h2>
+      <div class="foot-logos">
+        <img src="assets/images/logos/acm-nav.png" alt="ACM logo" width="72" height="72" loading="lazy">
+        <img src="assets/images/logos/cu-nav.png" alt="University of Calcutta logo" width="72" height="72" loading="lazy">
+      </div>
+      <address class="addr" id="addr"></address>
+      <a class="btn" id="mail" href="mailto:acm@example.com">acm@example.com</a>
+      <span class="label sm">Follow us</span>
+      <ul class="social" id="social"></ul>
+    </div>
+    <div class="foot-map">
+      <iframe id="mapFrame" title="Map of the University of Calcutta Technology Campus, Salt Lake" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <a class="map-link" id="mapLink" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+  </div>
   <div class="foot-row"><span>&copy; <span id="year2"></span> ACM CU</span><span>Built by the ACM CU web team</span></div>
 </footer>
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<script src="js/gravity.js"></script>
 </body>
 </html>
