@@ -14,6 +14,7 @@ window.ACM = {
       { title: "Intro to Git and GitHub", type: "Workshop", text: "Hands-on version control for beginners. Planned, details coming soon." },
       { title: "CodeSprint 1.0", type: "Contest", text: "Our first competitive programming round. Planned, details coming soon." },
       { title: "InspHER Podcast Ep. 1", type: "ACM-W", text: "Women in tech share their journeys. Planned, details coming soon." }
+      
     ],
     past: []
   },
@@ -28,7 +29,7 @@ window.ACM = {
     { name: "Shinjini Bhattacharya", role: "Chair", img: "", linkedin: "#", github: "#" },
     { name: "Debmalya Ghosh", role: "Vice Chair", img: "", linkedin: "#", github: "#" },
     { name: "Roni Dey", role: "Treasurer", img: "", linkedin: "#", github: "#" },
-    { name: "Subhra Pratim Mondal", role: "Web Master", img: "", linkedin: "#", github: "#" },
+    { name: "Subhra Pratim Mondal", role: "Web Master", img: "assets/images/faculty/Subhra.png", linkedin: "#", github: "#" },
     { name: "Debasmita Pal", role: "Membership Chair", img: "", linkedin: "#", github: "#" }
   ]
 };
