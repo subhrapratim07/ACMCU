@@ -49,8 +49,8 @@ window.ACM = {
     { name: "Mrinal Das", role: "Secretary", img: "assets/images/faculty/Mrinal.png", linkedin: "#", github: "" },
     { name: "Shinjini Bhattacharya", role: "Chair", img: "", linkedin: "#", github: "#" },
     { name: "Debmalya Ghosh", role: "Vice Chair", img: "", linkedin: "#", github: "#" },
-    { name: "Roni Dey", role: "Treasurer", img: "", linkedin: "#", github: "#" },
-    { name: "Subhra Pratim Mondal", role: "Web Master", img: "", linkedin: "#", github: "#" },
+    { name: "Roni Dey", role: "Treasurer", img: "assets/images/faculty/Roni.png", linkedin: "#", github: "#" },
+    { name: "Subhra Pratim Mondal", role: "Web Master", img: "assets/images/faculty/Subhra.png", linkedin: "#", github: "#" },
     { name: "Debasmita Pal", role: "Membership Chair", img: "", linkedin: "#", github: "#" }
   ]
 };
